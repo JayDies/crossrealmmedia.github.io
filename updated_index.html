@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross Realm Media - Marketing & Consulting Agency</title>
+    <style>
+        :root {
+            --dark-bg: #121212;
+            --text-color: #ffffff;
+            --accent-pink: #E1306C;
+            --accent-purple: #833AB4;
+            --accent-orange: #F77737;
+            --accent-yellow: #FFDC80;
+            --accent-blue: #405DE6;
+            --glow: 0 0 10px rgba(225, 48, 108, 0.7);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--accent-pink), var(--accent-purple), var(--accent-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: var(--glow);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #cccccc;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, rgba(131, 58, 180, 0.9), rgba(225, 48, 108, 0.9), rgba(64, 93, 230, 0.9));
+            border-radius: 15px;
+            padding: 60px 30px;
+            margin-bottom: 50px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            animation: pulse 15s infinite;
+            z-index: 0;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: translate(0, 0);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(-10%, -10%);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translate(0, 0);
+                opacity: 0.5;
+            }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #ffffff;
+            color: var(--accent-purple);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, var(--accent-pink), var(--accent-purple));
+            color: white;
+        }
+        
+        .section {
+            margin-bottom: 70px;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent-pink), var(--accent-purple));
+            border-radius: 3px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent-pink), var(--accent-purple));
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent-yellow);
+        }
+        
+        .service-card p {
+            margin-bottom: 20px;
+            color: #cccccc;
+            flex-grow: 1;
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--accent-pink), var(--accent-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(225, 48, 108, 0.5);
+        }
+        
+        .service-icon i {
+            font-size: 24px;
+            color: white;
+        }
+        
+        .learn-more {
+            display: inline-block;
+            color: var(--accent-pink);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+        
+        .learn-more:hover {
+            color: var(--accent-yellow);
+            transform: translateX(5px);
+        }
+        
+        .featured-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .featured-section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--accent-pink), var(--accent-purple), var(--accent-blue), var(--accent-orange));
+            border-radius: 17px;
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0.7;
+            animation: glowAnimation 10s linear infinite;
+        }
+        
+        @keyframes glowAnimation {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 400% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+        
+        .featured-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .featured-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .featured-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .featured-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--accent-yellow);
+        }
+        
+        .featured-text p {
+            margin-bottom: 20px;
+        }
+        
+        .featured-list {
+            list-style: none;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .featured-list li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+        
+        .featured-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+        }
+        
+        .testimonials {
+            margin-top: 70px;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.1);
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background: linear-gradient(45deg, var(--accent-pink), var(--accent-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .author-info h5 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            font-size: 0.9rem;
+            color: #999;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, rgba(131, 58, 180, 0.8), rgba(225, 48, 108, 0.8));
+            border-radius: 15px;
+            padding: 50px 30px;
+            text-align: center;
+            margin: 70px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        footer {
+            padding: 50px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--accent-pink), var(--accent-purple), var(--accent-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links a {
+            color: #cccccc;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-pink);
+        }
+        
+        .copyright {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-content {
+                flex-direction: column;
+            }
+            
+            .featured-section {
+                padding: 30px 20px;
+            }
+        }
+        
+        /* Animation for cards */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .service-card {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+        .service-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Cross Realm Media</div>
+            <div class="tagline">Marketing & Consulting Agency</div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Elevate Your Brand Presence</h1>
+                <p>Specialized marketing solutions for entertainment, influencers, and forward-thinking businesses.</p>
+                <a href="#services" class="cta-button">Explore Our Services</a>
+            </div>
+        </section>
+        
+        <section id="services" class="section">
+            <h2 class="section-title">Our Services</h2>
+            <p>Cross Realm Media offers specialized marketing and consulting services designed to help entertainers, influencers, and businesses connect with their audience and grow their brand.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <h3>Entertainment & Influencer Marketing</h3>
+                    <p>Strategic marketing solutions tailored specifically for entertainers, comedians, musicians, and influencers. We help you build your personal brand, grow your audience, and monetize your content across platforms.</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Event Marketing</h3>
+                    <p>Comprehensive event promotion and management services for live performances, tours, shows, and special events. From pre-event buzz to post-event engagement, we ensure maximum attendance and impact.</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Livestream & Content Marketing</h3>
+                    <p>End-to-end solutions for livestream events and content distribution. We help you maximize the value of your content through strategic promotion, audience engagement, and multi-platform repurposing.</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Influencer & Character Creation</h3>
+                    <p>Cutting-edge AI-powered virtual influencer and character development services. Create compelling digital personalities that engage audiences, represent your brand, and open new marketing opportunities.</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Marketing Automation</h3>
+                    <p>Streamline your marketing efforts with our custom automation solutions. Save time, maintain consistency, and improve results across social media, email, content creation, and audience engagement.</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Analytics & Strategy Consulting</h3>
+                    <p>Data-driven insights and strategic guidance to optimize your marketing efforts. We help you understand your audience, measure performance, and make informed decisions to grow your brand.</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="featured-section">
+            <h2 class="section-title">Featured Service: AI Influencer & Character Creation</h2>
+            
+            <div class="featured-content">
+                <div class="featured-image">
+                    <img src="https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="AI Influencer Creation">
+                </div>
+                
+                <div class="featured-text">
+                    <h3>Create Your Digital Brand Ambassador</h3>
+                    <p>Virtual influencers are revolutionizing digital marketing, offering brands unprecedented control, consistency, and creative freedom. Our AI Influencer & Character Creation service helps you develop compelling digital personalities that resonate with your audience and represent your brand values.</p>
+                    
+                    <ul class="featured-list">
+                        <li>Custom character design and personality development</li>
+                        <li>Content creation and social media management</li>
+                        <li>Audience engagement and community building</li>
+                        <li>Brand integration and storytelling</li>
+                        <li>Performance analytics and strategy optimization</li>
+                    </ul>
+                    
+                    <a href="mailto:Jay@crossrealmmedia.com" class="cta-button">Get Started</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="testimonials">
+            <h2 class="section-title">What Our Clients Say</h2>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    "Cross Realm Media transformed my social media presence completely. Their strategic approach to content creation and audience engagement helped me double my following in just three months. Their team understands the entertainment industry and knows exactly how to position artists for maximum impact."
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">JM</div>
+                    <div class="author-info">
+                        <h5>Jackie Monahan</h5>
+                        <p>Comedian & Podcast Host</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    "The AI character they created for our brand has become an integral part of our marketing strategy. It's opened up new ways to connect with our audience and tell our story. The engagement metrics have exceeded our expectations, and we're seeing real ROI from this innovative approach."
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SL</div>
+                    <div class="author-info">
+                        <h5>Sarah Lin</h5>
+                        <p>Marketing Director, Fusion Entertainment</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta-section">
+            <h2>Ready to Elevate Your Brand?</h2>
+            <p>Let Cross Realm Media help you connect with your audience, grow your brand, and achieve your marketing goals.</p>
+            <a href="mailto:Jay@crossrealmmedia.com" class="cta-button">Contact Us Today</a>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Cross Realm Media</div>
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#services">Services</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <div class="copyright">© 2025 Cross Realm Media. All rights reserved.</div>
+        </div>
+    </footer>
+</body>
+</html>
