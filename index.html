@@ -39,13 +39,24 @@
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
             font-size: 1.8rem;
             font-weight: bold;
             background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-decoration: none;
         }
 
         nav a {
@@ -307,7 +318,10 @@
 <body>
     <header>
         <div class="header-container">
-            <a href="#" class="logo">Cross Realm Media</a>
+            <a href="#" class="logo">
+                <img src="logo.png" alt="Cross Realm Media Logo">
+                <span class="logo-text">Cross Realm Media</span>
+            </a>
             <nav>
                 <a href="#services">Services</a>
                 <a href="#about">About</a>
@@ -319,7 +333,7 @@
     <section class="hero">
         <h1>Elevate Your Digital Presence</h1>
         <p>Specialized marketing solutions for entertainers, AEO optimization, and strategic marketing evaluations</p>
-        <a href="mailto:Jay@crossrealmmedia.com" class="cta-button">Get Started Today</a>
+        <a href="https://calendly.com/jay-crossrealmmedia" class="cta-button">Get Started Today</a>
     </section>
 
     <section id="services" class="services">
@@ -376,7 +390,7 @@
                 <strong>Email:</strong> <a href="mailto:Jay@crossrealmmedia.com">Jay@crossrealmmedia.com</a>
             </div>
         </div>
-        <a href="mailto:Jay@crossrealmmedia.com" class="cta-button">Schedule a Consultation</a>
+        <a href="https://calendly.com/jay-crossrealmmedia" class="cta-button">Schedule a Consultation</a>
     </section>
 
     <footer>
