@@ -1,407 +1,235 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cross Realm Media - Social Media Growth, AEO & Marketing Strategy</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #0a1428 0%, #1a3a52 50%, #0f5f3f 100%);
-            min-height: 100vh;
-        }
-
-        /* Header & Navigation */
-        header {
-            background: linear-gradient(135deg, rgba(10, 20, 40, 0.95) 0%, rgba(26, 58, 82, 0.95) 50%, rgba(15, 95, 63, 0.95) 100%);
-            padding: 1.5rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .logo img {
-            height: 55px; /* Enhanced height for better branding */
-            width: auto;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
-        }
-
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 2rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        nav a:hover {
-            color: #00ff88;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #00d4ff, #00ff88);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 6rem 2rem;
-            text-align: center;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            color: #e0e0e0;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
-            color: #0a1428;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
-        }
-
-        /* Services Section */
-        .services {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: white;
-            background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: linear-gradient(135deg, rgba(26, 58, 82, 0.8) 0%, rgba(15, 95, 63, 0.8) 100%);
-            padding: 2.5rem;
-            border-radius: 15px;
-            border: 2px solid rgba(0, 212, 255, 0.3);
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(0, 255, 136, 0.1);
-            color: white;
-        }
-
-        .service-card:hover {
-            border-color: rgba(0, 255, 136, 0.6);
-            box-shadow: 0 12px 35px rgba(0, 212, 255, 0.4), inset 0 0 30px rgba(0, 255, 136, 0.2);
-            transform: translateY(-5px);
-        }
-
-        .service-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .service-card p {
-            color: #e0e0e0;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .service-features {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-
-        .service-features li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            color: #c0c0c0;
-        }
-
-        .service-features li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #00ff88;
-            font-weight: bold;
-        }
-
-        /* About Section */
-        .about {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, rgba(26, 58, 82, 0.5) 0%, rgba(15, 95, 63, 0.5) 100%);
-            border-radius: 15px;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(0, 212, 255, 0.2);
-        }
-
-        .about h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            color: white;
-            background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .about p {
-            color: #e0e0e0;
-            font-size: 1.1rem;
-            line-height: 1.9;
-            margin-bottom: 1rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 2.2rem;
-            margin-bottom: 2rem;
-            color: white;
-            background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-
-        .contact-item {
-            color: white;
-            font-size: 1.1rem;
-        }
-
-        .contact-item a {
-            color: #00ff88;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-item a:hover {
-            color: #00d4ff;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, rgba(10, 20, 40, 0.95) 0%, rgba(26, 58, 82, 0.95) 50%, rgba(15, 95, 63, 0.95) 100%);
-            color: #999;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-            border-top: 1px solid rgba(0, 212, 255, 0.2);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            nav a {
-                margin-left: 1rem;
-                font-size: 0.9rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about {
-                padding: 2rem;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cross Realm Media, an AI-first game studio</title>
+  <meta name="description" content="Cross Realm Media builds one idea natively for Fortnite, Roblox, Minecraft and our own PC and browser games.">
+  <meta name="theme-color" content="#f8f5ec">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,650&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <a href="#" class="logo">
-                <img src="crm-logo.jpg" alt="Cross Realm Media Logo">
-                <span class="logo-text">Cross Realm Media</span>
-            </a>
-            <nav>
-                <a href="#services">Services</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-            </nav>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="banner">
+    <div class="container banner__inner">
+      <p>New studio. Our first three games are in development.</p>
+      <a href="#building">See them</a>
+    </div>
+  </div>
+
+  <header class="bar" data-bar>
+    <div class="container bar__inner">
+      <a class="wordmark" href="#top" aria-label="Cross Realm Media, back to top">Cross Realm Media</a>
+      <nav class="nav" aria-label="Main">
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-list" data-nav-toggle>Menu</button>
+        <ul class="nav__list" id="nav-list">
+          <li><a href="#realms">Realms</a></li>
+          <li><a href="#building">In development</a></li>
+          <li><a href="#how">How we work</a></li>
+          <li><a href="#brands">For brands</a></li>
+          <li class="nav__extra"><a href="#contact">Start a project</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--card bar__cta" href="#contact">Start a project</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero: Corridor posture, the four realms as torn paper strata beneath one idea -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="container hero__text">
+        <h1 id="hero-title">One idea, built for every world.</h1>
+        <p class="lead">A small, AI-first studio making games for Fortnite, Roblox and Minecraft, plus our own for PC and the browser.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#contact">Start a project</a>
+          <a class="btn btn--quiet" href="#building">See what we’re building</a>
         </div>
-    </header>
-
-    <section class="hero">
-        <h1>Elevate Your Digital Presence</h1>
-        <p>Specialized marketing solutions for entertainers, AEO optimization, and strategic marketing evaluations</p>
-        <a href="https://calendly.com/jay-crossrealmmedia" class="cta-button">Get Started Today</a>
+      </div>
+      <ul class="strata" aria-label="The four realms">
+        <li class="stratum stratum--fortnite"><a href="#realm-fortnite"><span class="stratum__name">Fortnite</span><span class="stratum__note">UEFN islands</span></a></li>
+        <li class="stratum stratum--roblox"><a href="#realm-roblox"><span class="stratum__name">Roblox</span><span class="stratum__note">Luau experiences</span></a></li>
+        <li class="stratum stratum--minecraft"><a href="#realm-minecraft"><span class="stratum__name">Minecraft</span><span class="stratum__note">Add-ons, mods, maps</span></a></li>
+        <li class="stratum stratum--standalone"><a href="#realm-standalone"><span class="stratum__name">Standalone</span><span class="stratum__note">Our own Godot games</span></a></li>
+      </ul>
     </section>
 
-    <section id="services" class="services">
-        <h2 class="section-title">Our Services</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Social Media Growth for Entertainers</h3>
-                <p>Amplify your presence across TikTok, Instagram, and YouTube with data-driven strategies tailored for musicians, comedians, and performers.</p>
-                <ul class="service-features">
-                    <li>Short-form video strategy & optimization</li>
-                    <li>Content calendar & consistency planning</li>
-                    <li>Authentic engagement & community building</li>
-                    <li>Strategic collaboration facilitation</li>
-                    <li>Performance analytics & optimization</li>
-                </ul>
-            </div>
-
-            <div class="service-card">
-                <h3>Answer Engine Optimization (AEO)</h3>
-                <p>Position your brand as an authoritative source in AI-driven search results from ChatGPT, Gemini, and Perplexity.</p>
-                <ul class="service-features">
-                    <li>Unique brand positioning strategy</li>
-                    <li>Comprehensive Q&A content development</li>
-                    <li>E-E-A-T & topical authority building</li>
-                    <li>AI model visibility optimization</li>
-                    <li>Citation & authority tracking</li>
-                </ul>
-            </div>
-
-            <div class="service-card">
-                <h3>Marketing Strategy Evaluations</h3>
-                <p>Comprehensive audits of your existing marketing efforts with actionable recommendations for improvement and growth.</p>
-                <ul class="service-features">
-                    <li>80+ point marketing audit</li>
-                    <li>Framework-based analysis (SWOT, RACE)</li>
-                    <li>Funnel optimization review</li>
-                    <li>Channel effectiveness assessment</li>
-                    <li>Prioritized action plan</li>
-                </ul>
-            </div>
+    <!-- 1. Realms -->
+    <section class="section realms" id="realms" aria-labelledby="realms-title">
+      <div class="container">
+        <div class="head head--split">
+          <h2 id="realms-title">1. Four realms, played four ways</h2>
+          <p class="lead">We don’t port one game four times. We design each version around how that platform’s players play.</p>
         </div>
+        <ul class="realm-grid">
+          <li class="realm realm--fortnite" id="realm-fortnite" data-reveal style="--i:0">
+            <span class="realm__paper" aria-hidden="true"></span>
+            <h3 class="realm__name">Fortnite</h3>
+            <p>Islands built in Unreal Editor for Fortnite, scripted in Verse.</p>
+          </li>
+          <li class="realm realm--roblox" id="realm-roblox" data-reveal style="--i:1">
+            <span class="realm__paper" aria-hidden="true"></span>
+            <h3 class="realm__name">Roblox</h3>
+            <p>Experiences and minigames, scripted in Luau.</p>
+          </li>
+          <li class="realm realm--minecraft" id="realm-minecraft" data-reveal style="--i:2">
+            <span class="realm__paper" aria-hidden="true"></span>
+            <h3 class="realm__name">Minecraft</h3>
+            <p>Bedrock add-ons, Java mods, maps and minigames.</p>
+          </li>
+          <li class="realm realm--standalone" id="realm-standalone" data-reveal style="--i:3">
+            <span class="realm__paper" aria-hidden="true"></span>
+            <h3 class="realm__name">Standalone</h3>
+            <p>Our own PC and browser games in Godot, on itch.io first, then Steam.</p>
+          </li>
+        </ul>
+      </div>
     </section>
 
-    <section id="about" class="about">
-        <h2>About Cross Realm Media</h2>
-        <p>Cross Realm Media is a specialized marketing and consulting agency dedicated to helping entertainers and businesses thrive in the digital landscape. We focus on three core areas where we deliver exceptional results: growing social media presence for entertainment professionals, optimizing for the new AI-driven search landscape through AEO, and providing strategic marketing evaluations that drive real business impact.</p>
-        <p>Our team combines deep industry expertise with cutting-edge marketing knowledge to deliver strategies that work. We believe in data-driven decisions, authentic engagement, and measurable results.</p>
-    </section>
-
-    <section id="contact" class="contact">
-        <h2>Let's Work Together</h2>
-        <div class="contact-info">
-            <div class="contact-item">
-                <strong>Email:</strong> <a href="mailto:Jay@crossrealmmedia.com">Jay@crossrealmmedia.com</a>
-            </div>
+    <!-- 2. In development: an index of projects, the lead one opened -->
+    <section class="section building" id="building" aria-labelledby="building-title">
+      <div class="container">
+        <div class="head">
+          <h2 id="building-title">2. Three games on the bench</h2>
+          <p class="lead">Working titles. No screenshots yet, so the covers are early concept art.</p>
         </div>
-        <a href="https://calendly.com/jay-crossrealmmedia" class="cta-button">Schedule a Consultation</a>
+
+        <article class="project project--lead">
+          <figure class="cover cover--art cover--wide">
+            <img src="img/mando-wars-keyart.jpg" srcset="img/mando-wars-keyart-800.jpg 800w, img/mando-wars-keyart.jpg 1600w" sizes="(max-width: 60rem) 92vw, 55vw" width="1600" height="900" loading="lazy" decoding="async" alt="Key art for Mando Wars: armored Mandalorian warriors in blue and in red trade blaster fire across a bombed-out city under a smoking green sky. Jetpack fighters streak overhead, torn clan banners fly on both sides, and the gold title Mando Wars sits in the middle.">
+          </figure>
+          <div class="project__text">
+            <h3 class="project__title">Mando Wars</h3>
+            <dl class="facts">
+              <div><dt>Realm</dt><dd>Fortnite, built in UEFN</dd></div>
+              <div><dt>Status</dt><dd>In development</dd></div>
+              <div><dt>Art</dt><dd>Concept, not gameplay</dd></div>
+            </dl>
+            <p>Mandalore lies in ruins after the Empire bombed it in the Great Purge. Now the clans that survived fight over what's left, blaster to blaster and jetpack to jetpack.</p>
+          </div>
+        </article>
+
+        <div class="project-pair">
+          <article class="project">
+            <figure class="cover cover--art">
+              <img src="img/sky-haulers-keyart.jpg" srcset="img/sky-haulers-keyart-800.jpg 800w, img/sky-haulers-keyart.jpg 1200w" sizes="(max-width: 60rem) 92vw, 30vw" width="1200" height="900" loading="lazy" decoding="async" alt="Concept art for Sky Haulers: an orange block-built cargo plane flies over floating islands with its back ramp open. One crew member hauls on a rope as crates tumble out, the pilot grins in the cockpit, and a storm rolls in behind.">
+            </figure>
+            <div class="project__text">
+              <h3 class="project__title">Sky Haulers</h3>
+              <dl class="facts">
+                <div><dt>Realm</dt><dd>Roblox</dd></div>
+                <div><dt>Status</dt><dd>In development</dd></div>
+                <div><dt>Art</dt><dd>Concept, not gameplay</dd></div>
+              </dl>
+              <p>A co-op cargo flying game. One friend flies while the other keeps the crates from sliding out the back.</p>
+            </div>
+          </article>
+          <article class="project" id="crowd-of-one">
+            <figure class="cover cover--art">
+              <img src="img/crowd-of-one-keyart.jpg" srcset="img/crowd-of-one-keyart-800.jpg 800w, img/crowd-of-one-keyart.jpg 1200w" sizes="(max-width: 60rem) 92vw, 30vw" width="1200" height="900" loading="lazy" decoding="async" alt="Concept art for Crowd of One: in a block-built stone vault, a player in an orange hood runs for a chest of gold while four glowing green copies of them help. One stands on a pressure plate, one pulls a lever, one holds up the iron gate and one waits on a ledge plate, with glowing footprints showing each one's path.">
+            </figure>
+            <div class="project__text">
+              <h3 class="project__title">Crowd of One</h3>
+              <dl class="facts">
+                <div><dt>Realm</dt><dd>Minecraft Bedrock</dd></div>
+                <div><dt>Status</dt><dd>Coming soon</dd></div>
+                <div><dt>Art</dt><dd>Concept, not gameplay</dd></div>
+              </dl>
+              <p>Every 30 seconds, time resets and your last run comes back as an echo. Stack up to five of yourself to hold the plates, pull the levers and crack the room. Get in an echo’s way and the whole loop falls apart.</p>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Cross Realm Media. All rights reserved.</p>
-    </footer>
+    <!-- 3. How we work: a diagram of the real crew -->
+    <section class="section how" id="how" aria-labelledby="how-title">
+      <div class="container how__grid">
+        <div class="how__text">
+          <h2 id="how-title">3. Two people and a crew of agents</h2>
+          <ol class="principles">
+            <li><h3>Humans make the calls</h3><p>What to build, what feels right, what ships.</p></li>
+            <li><h3>Agents do the legwork</h3><p>Design drafts, code, QA passes, art direction and research.</p></li>
+            <li><h3>Playtests come early</h3><p>Players try rough builds, so we can test lots of ideas fast and keep the good ones.</p></li>
+          </ol>
+        </div>
+        <figure class="crew diagram" aria-labelledby="crew-cap">
+          <div class="crew__humans">
+            <span class="chip chip--ink">Core team of two</span>
+          </div>
+          <ul class="crew__agents" aria-label="Agent crew">
+            <li class="chip">Design</li>
+            <li class="chip">Code</li>
+            <li class="chip">QA</li>
+            <li class="chip">Art direction</li>
+            <li class="chip">Research</li>
+          </ul>
+          <div class="crew__out">
+            <span class="chip chip--pear">Playtest</span>
+            <span class="chip chip--mint">Ship</span>
+          </div>
+          <figcaption id="crew-cap">How a build moves: two people decide, five agent roles do the work, then players test it.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 4. Services for brands -->
+    <section class="section brands" id="brands" aria-labelledby="brands-title">
+      <div class="container brands__grid">
+        <div class="head">
+          <h2 id="brands-title">4. Studio work for brands</h2>
+          <p class="lead">Built to your brief, in the world your players already live in.</p>
+        </div>
+        <ul class="services">
+          <li><h3>Branded islands and experiences</h3><p>Fortnite islands and Roblox experiences with your brand built into the play.</p></li>
+          <li><h3>Minecraft maps and add-ons</h3><p>Adventure maps, minigames and Bedrock add-ons.</p></li>
+          <li><h3>Prototypes</h3><p>A playable test of an idea before you commit to the full build.</p></li>
+          <li><h3>Live-ops and updates</h3><p>New content, events and fixes after launch.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 5. Contact -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact__sheet">
+        <div class="container contact__grid">
+          <div>
+            <h2 id="contact-title">5. Start a project</h2>
+            <p class="lead">Tell us the idea and the world it belongs in.</p>
+          </div>
+          <div class="contact__actions">
+            <a class="btn btn--primary" href="mailto:Jay@crossrealmmedia.com?subject=New%20project">Start a project</a>
+            <dl class="contact__details">
+              <div><dt>Email</dt><dd><a href="mailto:Jay@crossrealmmedia.com">Jay@crossrealmmedia.com</a></dd></div>
+              <!-- TODO: add the Discord invite link -->
+              <div><dt>Players</dt><dd><a href="#">Join the Discord</a></dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <p class="footer__signoff">See you in the realms.<br><span>Cross Realm Media</span></p>
+      <ul class="footer__links">
+        <li><a href="#realms">Realms</a></li>
+        <li><a href="#building">In development</a></li>
+        <li><a href="#how">How we work</a></li>
+        <li><a href="#brands">For brands</a></li>
+      </ul>
+      <div class="footer__legal">
+        <p>&copy; 2026 Cross Realm Media</p>
+        <p>Fortnite, Roblox and Minecraft are trademarks of their respective owners. Cross Realm Media is an independent studio and is not affiliated with or endorsed by Epic Games, Roblox Corporation, Mojang or Microsoft. Star Wars is a trademark of Lucasfilm Ltd. and The Walt Disney Company; Mando Wars is not official and is not endorsed by Disney.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
