@@ -150,6 +150,24 @@ h3 { font-size: var(--text-title); }
 .facts dt { color: var(--color-muted); }
 .facts dd { margin: 0; font-weight: 650; }
 
+/* Out now: Halcyon Station. The trailer sits on a torn sand sheet like a pinned print. */
+.play { padding-top: var(--section-gap-s); }
+.play__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-2xl); align-items: start; }
+@media (min-width: 60.01rem) { .play__media { position: sticky; top: 120px; } }
+.play__media { position: relative; isolation: isolate; padding: var(--space-lg); filter: var(--shadow-paper); }
+.play__media::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--grain), var(--fibre), var(--realm-standalone); clip-path: var(--tear-card-b); }
+.play__video { position: relative; aspect-ratio: 16 / 9; border-radius: var(--radius-stock); overflow: hidden; background: var(--color-ink); }
+.play__video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.play__text { display: grid; gap: var(--space-md); align-content: center; }
+.play__kicker { font-size: var(--text-sm); font-weight: 650; color: var(--realm-standalone-ink); }
+.play__lead { font-size: var(--text-lead); line-height: 1.45; font-weight: 600; max-width: 36ch; }
+.play__text > p:not(.play__kicker):not(.play__lead) { max-width: 46ch; }
+.play__list { display: grid; gap: var(--space-2xs); margin: 0; padding-left: 1.2em; }
+.play__note { font-size: var(--text-sm); color: var(--color-muted); }
+.play__actions { display: flex; flex-wrap: wrap; gap: var(--space-md); padding-top: var(--space-xs); }
+@media (max-width: 60rem) { .play__grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); } .play__media { padding: var(--space-md); } }
+@media (max-width: 34rem) { .play__actions .btn { width: 100%; } }
+
 .cover { position: relative; isolation: isolate; margin: 0; aspect-ratio: 4 / 3; filter: var(--shadow-paper); }
 .project--lead .cover { min-height: 440px; aspect-ratio: auto; }
 .cover__paper { position: absolute; inset: 0; z-index: -1; background: var(--grain), var(--fibre), var(--cover-c); clip-path: var(--tear-card-b); }
